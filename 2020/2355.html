@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.ormoe.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="User Agent，简称 UA，通过HPPT头连同访问请求传递给服务器，使得服务器能够识别客户使用的操作系统及版本、CPU 类型、浏览器及版本、浏览器渲染引擎、浏览器语言、浏览器插件等，并依此为依据返回针对相应设备适配的网页和数据。 在WordPress中，用户提交评论甚至是用户访问，相应的UA信息都会储存到数据库中，如果感兴趣，可以查看WordPress数据库下的wp_comments表单，里">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给WordPress博客系统评论框显示用户UA">
+<meta property="og:url" content="http://www.ormoe.com/2020/2355.html">
+<meta property="og:site_name" content="偶尔萌">
+<meta property="og:description" content="User Agent，简称 UA，通过HPPT头连同访问请求传递给服务器，使得服务器能够识别客户使用的操作系统及版本、CPU 类型、浏览器及版本、浏览器渲染引擎、浏览器语言、浏览器插件等，并依此为依据返回针对相应设备适配的网页和数据。 在WordPress中，用户提交评论甚至是用户访问，相应的UA信息都会储存到数据库中，如果感兴趣，可以查看WordPress数据库下的wp_comments表单，里">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/grinxxoo/bed/images/u=721329380,3165190185&fm=26&gp=0.jpg">
+<meta property="article:published_time" content="2020-03-29T17:54:19.000Z">
+<meta property="article:modified_time" content="2021-08-29T17:12:30.450Z">
+<meta property="article:author" content="Grin">
+<meta property="article:tag" content="wordpress">
+<meta property="article:tag" content="网站日记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/grinxxoo/bed/images/u=721329380,3165190185&fm=26&gp=0.jpg">
+
+<link rel="canonical" href="http://www.ormoe.com/2020/2355.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>给WordPress博客系统评论框显示用户UA | 偶尔萌</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">偶尔萌</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">趁风还没停，努力奔赴远方吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.ormoe.com/2020/2355.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Grin">
+      <meta itemprop="description" content="随手记录生活点滴和灵感创作">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="偶尔萌">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          给WordPress博客系统评论框显示用户UA
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-30 01:54:19" itemprop="dateCreated datePublished" datetime="2020-03-30T01:54:19+08:00">2020-03-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 01:12:30" itemprop="dateModified" datetime="2021-08-30T01:12:30+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%AB%99%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">网站日记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>User Agent</strong>，简称 UA，通过HPPT头连同访问请求传递给服务器，使得服务器能够识别客户使用的操作系统及版本、CPU 类型、浏览器及版本、浏览器渲染引擎、浏览器语言、浏览器插件等，并依此为依据返回针对相应设备适配的网页和数据。</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/grinxxoo/bed/images/u=721329380,3165190185&fm=26&gp=0.jpg">在WordPress中，用户提交评论甚至是用户访问，相应的UA信息都会储存到数据库中，如果感兴趣，可以查看WordPress数据库下的wp_comments表单，里面有一项comment_agent即是评论的UA信息。</p>
+<p>因此很轻易地，我们可以通过调用各条评论的UA，来显示评论者的操作系统和浏览器等信息。 </p>
+<p>在WordPress提供的函数中，如get_comment_author_IP可以直接调取评论者IP，但是同一数据表下的comment_agent却没有直接调取的函数。</p>
+<p>那么自己造一个函数吧。</p>
+<p>在WordPress文档中发现，get_comment_author_IP函数实际是通过wp-includes/comment-template.php这个文件定义的，那么接下来直接对comment-template.php中的get_comment_author_IP函数稍加改造就能调用UA了。</p>
+<p>具体，在主题的function.php中直接加入下面一段函数，get_comment_agent函数就造好了：</p>
+<pre><code>comment\_agent, $comment-&gt;comment\_ID, $comment );
+  &#125;
+  ?&gt;
+</code></pre>
+<p>接下来我们需要一个转换函数把上面调取出来的UA字段转换为显示在用户屏幕上的内容。</p>
+<p>我的想法是使用icon font来显示，那么直接把UA输出到HTML标签上就好啦。</p>
+<p>可是User Agent是一段类似”Mozilla/5.0 (X11; Fedora; Linux x86_64)      AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36”这样的文字，需要用正则表达拆分，然后用UA数据库匹配，实在太麻烦，我懒得做，不过幸好找到一个转换UA的API，那么直接调用就行了（这个数据库服务器好像有点不稳，偶尔会掉线，不妨在API请求部分添加一个超时的条件）。</p>
+<p>下面是UA转换的代码，添加到function.php中：</p>
+<pre><code>agent\_name; //Chrome / Android Webkit Browser / Safari / Firefox / BlackBerry / Internet Explorer / Edge
+$OsType = $getua-&gt;os\_type; //Windows / Android / Linux / Macintosh / BlackBerryOS 
+$OsName = $getua-&gt;os\_name; //Windows 10 / Windows 8 / Windows 8.1 / Windows 7 / Windows XP /  / Android / Linux / OS X / iPhone OS / BlackBerryOS / FreeBSD
+$LinuxDistibution = $getua-&gt;linux\_distibution; //Ubuntu / CentOS / Fedora / Debian / Red Hat
+ 
+// Browser name
+if (($AgentName == &quot;Chrome&quot;) || ($AgentName == &quot;Android Webkit Browser&quot;) || ($AgentName == &quot;Safari&quot;) || ($AgentName == &quot;Firefox&quot;) || ($AgentName == &quot;BlackBerry&quot;) || ($AgentName == &quot;Internet Explorer&quot;) || ($AgentName == &quot;Edge&quot;)) &#123;
+    if (($AgentName == &quot;Android Webkit Browser&quot;) || ($AgentName == &quot;Internet Explorer&quot;)) &#123;
+        $print\_browser = str\_replace( &quot; &quot;, &quot;-&quot;,$AgentName);
+    &#125; else &#123;
+        $print\_browser = $AgentName;
+    &#125;
+&#125;
+else &#123;
+    $print\_browser = &quot;unkwon-browser&quot;;
+&#125;
+ 
+// System name
+if (($LinuxDistibution == &quot;Ubuntu&quot;) || ($LinuxDistibution == &quot;CentOS&quot;) || ($LinuxDistibution == &quot;Fedora&quot;) || ($LinuxDistibution == &quot;Debian&quot;) || ($LinuxDistibution == &quot;Red Hat&quot;)) &#123;
+    if ($LinuxDistibution == &quot;Red Hat&quot;) &#123;
+        $print\_system = str\_replace( &quot; &quot;, &quot;-&quot;,$LinuxDistibution);
+    &#125; else &#123;
+        $print\_system = $LinuxDistibution; // Linux Distributions
+    &#125;
+&#125; elseif (($OsName == &quot;Windows 10&quot;) || ($OsName == &quot; Windows 8&quot;) || ($OsName == &quot;Windows 7&quot;) || ($OsName == &quot;Windows XP&quot;) || ($OsName == &quot;Android&quot;) || ($OsName == &quot;Linux&quot;) || ($OsName == &quot;OS X&quot;) || ($OsName == &quot;iPhone OS&quot;) || ($OsName == &quot;BlackBerryOS&quot;) || ($OsName == &quot;FreeBSD&quot;)) &#123;
+    if (($OsName == &quot;Windows 10&quot;) || ($OsName == &quot; Windows 8&quot;) || ($OsName == &quot;Windows 8.1&quot;) || ($OsName == &quot;Windows 7&quot;) || ($OsName == &quot;Windows XP&quot;) || ($OsName == &quot;OS X&quot;) || ($OsName == &quot;iPhone OS&quot;)) &#123;
+        $print\_system = str\_replace( &quot; &quot;, &quot;-&quot;,$OsName);
+    &#125; elseif ($OsName == &quot;Windows 8.1&quot;) &#123;
+        $print\_system = &quot;Windows-9&quot;;
+    &#125; else &#123;
+        $print\_system = $OsName; // OS name like Windows 10, iPhone
+    &#125;
+&#125; elseif (($OsType == &quot;Windows&quot;) || ($OsType == &quot;Android&quot;) || ($OsType == &quot;Linux&quot;) || ($OsType == &quot;Macintosh&quot;) || ($OsType == &quot;BlackBerryOS&quot;)) &#123;
+    $print\_system = $OsType; // No specified OS info
+&#125; else &#123; 
+    $print\_system = &quot;unkwon-system&quot;;
+&#125;
+ 
+return &quot;  &quot;;
+//return &quot;&quot;; 
+//return $print\_system . $print\_browser;
+//return $ua;
+&#125;
+?&gt;
+</code></pre>
+<p>然后呢，在function.php中找到类似的一段代码，这附近就是评论框了，主题不同内容也略有不同，在合适的位置加上一句即可调用转换后的内容，直接以的形式输出在HTML中。然后你就可以导入自己的icon font来渲染啦。</p>
+<p>你可以直接用我搭配好的，HTML中引入：</p>
+<pre><code>.icon &#123;
+ width: 1em; height: 1em;
+ vertical-align: -0.15em;
+ fill: currentColor;
+ overflow: hidden;
+ &#125; 
+</code></pre>
+<p>Icon font可以在阿里巴巴矢量图标库中自由配置（需要按照上面转换代码中的注释重命class名，注意我把所有空格转换成了-），最后直接引入相应的CSS或者JS即可，如果网页中已经引入了Font Awesome，那么你可以修改上面的函数以使用fa fa icon。</p>
+<p><strong>注意：因为每一条UA的处理都需要访问外部API，所以页面请求时间会变长，建议控制每页显示评论数量，善用评论的翻页功能；或者尝试建立本地的UA字符串匹配。</strong></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Grin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.ormoe.com/2020/2355.html" title="给WordPress博客系统评论框显示用户UA">http://www.ormoe.com/2020/2355.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/wordpress/" rel="tag"># wordpress</a>
+              <a href="/tags/%E7%BD%91%E7%AB%99%E6%97%A5%E8%AE%B0/" rel="tag"># 网站日记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/16107.html" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/168b.html" rel="next" title="怎么看待最近圈子很火的“舔狗日记”">
+      怎么看待最近圈子很火的“舔狗日记” <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Grin</p>
+  <div class="site-description" itemprop="description">随手记录生活点滴和灵感创作</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">123</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">orMoE.</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.ormoe.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="翻墙犯法最好的实践据湖南常德津市市公安局官方微信7月28日消息，**世界那么大，好想“翻墙”去看看.**少数网友通过“翻墙”软件连接境外网站，有的浏览不良网站的同时，还在境外论坛、网站发布不实信息和言论。这不，常德一男子通过Shadowrocket“翻墙”访问境外网站，被行政处罚！  翻墙浏览不良网站？津市市公安局网安大队民警在工作中发现，有人使用“翻墙”软件接入境外网络，办案民警随即展开调查，并">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一男子利用Shadowrocket“翻墙”被行政处罚">
+<meta property="og:url" content="http://www.ormoe.com/2020/0fq6.html">
+<meta property="og:site_name" content="偶尔萌">
+<meta property="og:description" content="翻墙犯法最好的实践据湖南常德津市市公安局官方微信7月28日消息，**世界那么大，好想“翻墙”去看看.**少数网友通过“翻墙”软件连接境外网站，有的浏览不良网站的同时，还在境外论坛、网站发布不实信息和言论。这不，常德一男子通过Shadowrocket“翻墙”访问境外网站，被行政处罚！  翻墙浏览不良网站？津市市公安局网安大队民警在工作中发现，有人使用“翻墙”软件接入境外网络，办案民警随即展开调查，并">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/grinxxoo/bed/images/33.jpg">
+<meta property="article:published_time" content="2020-07-29T10:37:13.000Z">
+<meta property="article:modified_time" content="2021-08-29T17:12:31.146Z">
+<meta property="article:author" content="Grin">
+<meta property="article:tag" content="网络安全">
+<meta property="article:tag" content="vpn">
+<meta property="article:tag" content="Shadowrocket">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/grinxxoo/bed/images/33.jpg">
+
+<link rel="canonical" href="http://www.ormoe.com/2020/0fq6.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>一男子利用Shadowrocket“翻墙”被行政处罚 | 偶尔萌</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">偶尔萌</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">趁风还没停，努力奔赴远方吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.ormoe.com/2020/0fq6.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Grin">
+      <meta itemprop="description" content="随手记录生活点滴和灵感创作">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="偶尔萌">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一男子利用Shadowrocket“翻墙”被行政处罚
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-29 18:37:13" itemprop="dateCreated datePublished" datetime="2020-07-29T18:37:13+08:00">2020-07-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-30 01:12:31" itemprop="dateModified" datetime="2021-08-30T01:12:31+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%B0%E9%97%BB%E4%BA%8B%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">新闻事件</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="翻墙犯法最好的实践"><a href="#翻墙犯法最好的实践" class="headerlink" title="翻墙犯法最好的实践"></a>翻墙犯法最好的实践</h3><p>据湖南常德津市市公安局官方微信7月28日消息，**世界那么大，好想“翻墙”去看看.**少数网友通过“翻墙”软件连接境外网站，有的浏览不良网站的同时，还在境外论坛、网站发布不实信息和言论。这不，常德一男子通过Shadowrocket“翻墙”访问境外网站，被行政处罚！</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/grinxxoo/bed/images/33.jpg" alt="津市市公安局官方发布"></p>
+<h3 id="翻墙浏览不良网站？"><a href="#翻墙浏览不良网站？" class="headerlink" title="翻墙浏览不良网站？"></a>翻墙浏览不良网站？</h3><p><strong>津市市公安局网安大队民警在工作中发现，有人使用“翻墙”软件接入境外网络，办案民警随即展开调查，并迅速查明家住某小区陈某使用“翻墙”软件浏览境外色情网站的违法事实。</strong></p>
+<p>据警方的调查了解，违法行为人陈某自2019年2月向吴某购买“翻墙”软件“Shadowrocket”后，便将该软件下载至自己苹果手机中，在手机上使用该软件建立非法信道进行国际联网，并长期用于浏览境外色情网站。</p>
+<p>目前，<strong>根据《中华人民共和国计算机信息网络国际联网管理暂行规定》第六条、第十四条之规定，给予违法行为人陈某警告处罚。</strong></p>
+<h3 id="你要知道的法律规定"><a href="#你要知道的法律规定" class="headerlink" title="你要知道的法律规定"></a>你要知道的法律规定</h3><p>所谓的“翻墙”，是指绕过相应的IP封锁、内容过滤、域名劫持、流量限制等，实现对网络内容的访问。在我国网民所称的“翻墙”，一般是指绕开我国的法律管制，浏览境外服务器的相关网页内容。</p>
+<p><strong>为了加强对计算机信息网络国际联网的管理，保障国际计算机信息交流的健康发展，我国制定了《中华人民共和国计算机信息网络国际联网管理暂行规定》，其中规定了“计算机信息网络直接进行国际联网，必须使用邮电部国家公用电信网提供的国际出入口信道。任何单位和个人不得自行建立或者使用其他信道进行国际联网。”如违反上述规定，公安机关会责令停止联网，给予警告，可以并处15000元以下的罚款；有违法所得的，没收违法所得。</strong></p>
+<h3 id="处罚规定"><a href="#处罚规定" class="headerlink" title="处罚规定"></a>处罚规定</h3><p><strong>行为人如果非法出售可访问境外互联网网站的“VPN”翻墙服务的，可能会触犯“提供侵入、非法控制计算机信息系统程序、工具罪”，情节严重的，会处以三年以下有期徒刑或者拘役，并处或者单处罚金。如果行为人使用“翻墙”软件获得某些不实言论、信息后，进行散布、造谣，并造成不良影响的，可能会触犯“寻衅滋事罪”或者是“诽谤罪”等等。</strong></p>
+<h3 id="温馨提示"><a href="#温馨提示" class="headerlink" title="温馨提示"></a>温馨提示</h3><p><strong>互联网已经渗透进我们生活的方方面面，网络安全和每个人都息息相关。每个人都要提高网络安全意识，共建”绿色”网络。</strong></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>GRIN
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.ormoe.com/2020/0fq6.html" title="一男子利用Shadowrocket“翻墙”被行政处罚">http://www.ormoe.com/2020/0fq6.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag"># 网络安全</a>
+              <a href="/tags/vpn/" rel="tag"># vpn</a>
+              <a href="/tags/Shadowrocket/" rel="tag"># Shadowrocket</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/9qc1.html" rel="prev" title="高通推出Quick Charge 5快充 你还在乎电池容量吗？">
+      <i class="fa fa-chevron-left"></i> 高通推出Quick Charge 5快充 你还在乎电池容量吗？
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/bushu.html" rel="next" title="人在家中坐 步数天上来--安卓刷步数神器">
+      人在家中坐 步数天上来--安卓刷步数神器 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BF%BB%E5%A2%99%E7%8A%AF%E6%B3%95%E6%9C%80%E5%A5%BD%E7%9A%84%E5%AE%9E%E8%B7%B5"><span class="nav-number">1.</span> <span class="nav-text">翻墙犯法最好的实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BF%BB%E5%A2%99%E6%B5%8F%E8%A7%88%E4%B8%8D%E8%89%AF%E7%BD%91%E7%AB%99%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">翻墙浏览不良网站？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%A0%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E6%B3%95%E5%BE%8B%E8%A7%84%E5%AE%9A"><span class="nav-number">3.</span> <span class="nav-text">你要知道的法律规定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%BD%9A%E8%A7%84%E5%AE%9A"><span class="nav-number">4.</span> <span class="nav-text">处罚规定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%A9%E9%A6%A8%E6%8F%90%E7%A4%BA"><span class="nav-number">5.</span> <span class="nav-text">温馨提示</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Grin</p>
+  <div class="site-description" itemprop="description">随手记录生活点滴和灵感创作</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">123</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">orMoE.</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
