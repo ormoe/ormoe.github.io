@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="anle">
+    <meta name="fragment" content="!">
+
+  
+
+    <meta name="description" content="Sit next to the bench, on my right, and look where I'm going.">
+    
+    
+    <meta name="keywords" content="About">
+
+
+
+
+<title>About | 前端爱好者痴笑</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+<!-- Page caching is in progress -->
+<link rel="stylesheet" href="/src/css/loading.css">
+    <!-- stylesheets list from _config.yml -->
+    <link rel="stylesheet" href="/about/css/about.css">
+    <link rel="stylesheet" href="/src/css/style.css">
+    <link rel="stylesheet" href="/src/css/iconfont.css">
+    
+         <!--Add typewriter effects to pages-->
+<script src="https://cdn.bootcss.com/typed.js/2.0.11/typed.js"></script>
+
+   <!--Introduction of a collection of web widgets-->
+       <script src="/src/js/tool.js"></script>
+
+    <!-- scripts list from _config.yml -->
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    
+    <script src="/src/js/script.js"></script>
+    <script src="/src/js/tocbot.min.js"></script>
+    
+
+
+
+
+
+
+
+</head>
+<body>
+<!-- Loader animation begin -->
+
+<div id="pre-loader" class="loader-background">
+	<div class="spinner">
+		<div class="dot1">
+		</div>
+		<div class="dot2">
+		</div>
+	</div>
+</div>
+<script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js">
+</script>
+<script type="text/javascript" language="JavaScript">
+	//: 判断网页是否加载完成
+document.onreadystatechange = function() {
+    if (document.readyState == "complete") {
+        $("#pre-loader").fadeOut("slow");
+        document.getElementById("pre-loader").remove();
+    }
+}
+</script>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/about">About</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/">Home</a>
+                    <a class="menu-item" href="/talk">Talk</a>
+                    <a class="menu-item" href="/friends">Friends</a>
+
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                   <a href="/about">About</a>
+                   <a id="mobile-toggle-theme"></a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/">Home</a>
+                    <a class="menu-item" href="/talk">Talk</a>
+                    <a class="menu-item" href="/friends">Friends</a>
+                
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script type="text/javascript">
+var snow = function() {
+if(1==1) {
+$("body").append('<canvas id="christmasCanvas" style="top: 0px; left: 0px; z-index: 5000; position: fixed; pointer-events: none;"></canvas>');
+var b = document.getElementById("christmasCanvas"), a = b.getContext("2d"), d = window.innerWidth, c = window.innerHeight;
+b.width = d;
+b.height = c;
+for(var e = [], b = 0;b < 70;b++) {
+e.push({x:Math.random() * d, y:Math.random() * c, r:Math.random() * 4 + 1, d:Math.random() * 70})
+}
+var h = 0;
+window.intervral4Christmas = setInterval(function() {
+a.clearRect(0, 0, d, c);
+a.fillStyle = "rgba(255, 255, 255, 0.6)";
+a.shadowBlur = 5;
+a.shadowColor = "rgba(255, 255, 255, 0.9)";
+a.beginPath();
+for(var b = 0;b < 70;b++) {
+var f = e[b];
+a.moveTo(f.x, f.y);
+a.arc(f.x, f.y, f.r, 0, Math.PI * 2, !0)
+}
+a.fill();
+h += 0.01;
+for(b = 0;b < 70;b++) {
+if(f = e[b], f.y += Math.cos(h + f.d) + 1 + f.r / 2, f.x += Math.sin(h) * 2, f.x > d + 5 || f.x < -5 || f.y > c) {
+e[b] = b % 3 > 0 ? {x:Math.random() * d, y:-10, r:f.r, d:f.d} : Math.sin(h) > 0 ? {x:-5, y:Math.random() * c, r:f.r, d:f.d} : {x:d + 5, y:Math.random() * c, r:f.r, d:f.d}
+}
+}
+}, 70)
+}
+}
+snow();
+</script><canvas id="christmasCanvas" style="top: 0px; left: 0px; z-index: 5000; position: fixed; pointer-events: none;" width="1920" height="917"></canvas>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+<div class="main">
+           <div class="container">
+    <article class="post-wrap page">
+        <section class="post-content">
+       	
+			<div class="row">
+				<div class="col-10 mx-auto">
+					<div class="night-view  loaded animated">
+						<div class="night-view-browser colored bg-light"></div>
+						<div class="night-view-mb ">
+							<div class="night-view-mb-inner leave" style="width: 50%;"></div>
+							<img src="https://ae01.alicdn.com/kf/H2d4bdbeb68c243e39ac5627dc0a54244N.jpg" alt="痴笑先生">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+
+			
+			<div class="panle">
+			<h5><span class="element"></span></h5></div>
+    </section>
+   </article>
+</div> 
+</div>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 2015-2020 | <a href="https://beian.miit.gov.cn/">蜀ICP备18033076号-3</a> </span>
+    </div>
+</footer>
+ <script>
+    var typed = new Typed('.element', {
+      strings: ["纠正一个错误的方法有很多", "而解决一个错误的终极方法，就是不给它发生的机会。"], 
+      typeSpeed: 100, 
+      backSpeed: 50 
+    });
+   </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('//at.alicdn.com/t/font_1714289_6en5f7phy0i.eot');
+  src: url('//at.alicdn.com/t/font_1714289_6en5f7phy0i.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1714289_6en5f7phy0i.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1714289_6en5f7phy0i.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1714289_6en5f7phy0i.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1714289_6en5f7phy0i.svg#iconfont') format('svg');
+}
